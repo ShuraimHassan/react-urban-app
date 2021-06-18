@@ -3,8 +3,6 @@ const plugin = require('tailwindcss/plugin')
 const _ = require('lodash')
 
 module.exports = {
-  prefix: 'tw-',
-  important: true,
   purge: [
     "./resources/views/**/*.pug",
     "./resources/sass/**/*.sass",
@@ -46,6 +44,10 @@ module.exports = {
       colors: {
         "light-grayish-yellow": "rgb(236,235,225)",
         "grayish-blue": "rgb(59, 88, 111)",
+        logo: {
+          urban: '#00d9d2',
+          App: '#5a5a5a',
+        },
         primary: {
           50: "#e5f7f7",
           100: "#cceff0",
@@ -131,7 +133,7 @@ module.exports = {
 
   },
   plugins: [
-    plugin(function({ addComponents, theme }) {
+    plugin(function ({ addComponents, theme }) {
       const screens = theme('screens', {})
 
       const mediaQueries = _.map(screens, width => {
@@ -149,7 +151,7 @@ module.exports = {
         ...mediaQueries,
       ])
     }),
-    plugin(function({ addUtilities, theme, e }) {
+    plugin(function ({ addUtilities, theme, e }) {
       const rotateUtilities = _.map(theme('rotate'), (value, key) => {
         return {
           [`.${e(`rotate-${key}`)}`]: {
@@ -160,13 +162,13 @@ module.exports = {
 
       addUtilities(rotateUtilities)
     }),
-    plugin(function({ addBase, theme }) {
+    plugin(function ({ addBase, theme }) {
       addBase({
         'h1': { fontSize: theme('fontSize.2xl') },
         'h2': { fontSize: theme('fontSize.xl') },
         'h3': { fontSize: theme('fontSize.lg') },
       })
-    }), 
+    }),
     plugin(function ({ addComponents }) {
       const buttons = {
         ".btn": {

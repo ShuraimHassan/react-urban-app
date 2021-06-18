@@ -1,9 +1,13 @@
+import Header from './Components/Header';
+import MidSection from './Components/MidSection';
+import Card from './Components/Card';
 
 function App() {
   return (
     <div>
-    <h1>Tailwind CSS</h1>
-    <h2>Urban App Updated</h2>
+      <Header />
+      <MidSection/>
+      <Card/>
     </div>
   );
 }
